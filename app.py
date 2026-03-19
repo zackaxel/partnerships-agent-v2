@@ -260,8 +260,9 @@ ALL_TOOLS = [
                 "keywords": {"type": "array", "items": {"type": "string"}, "description": "Keyword tags e.g. ['shopify app', 'ecommerce analytics']"},
                 "employee_ranges": {"type": "array", "items": {"type": "string"}, "description": "e.g. ['11,50', '51,200', '201,500']"},
                 "domains": {"type": "array", "items": {"type": "string"}, "description": "Specific domains e.g. ['triplewhale.com']"},
-                "limit": {"type": "integer", "default": 10},
+                "limit": {"type": "integer", "description": "Number of results (max 25)"},
             },
+            "required": [],
         },
     },
     {
@@ -273,7 +274,7 @@ ALL_TOOLS = [
                 "domains": {"type": "array", "items": {"type": "string"}, "description": "Company domains e.g. ['triplewhale.com']"},
                 "titles": {"type": "array", "items": {"type": "string"}, "description": "Job titles to filter by"},
                 "seniorities": {"type": "array", "items": {"type": "string"}, "description": "['vp', 'director', 'c_suite', 'owner']"},
-                "limit": {"type": "integer", "default": 5},
+                "limit": {"type": "integer", "description": "Number of results"},
             },
             "required": ["domains"],
         },
@@ -295,7 +296,7 @@ ALL_TOOLS = [
     {
         "name": "apollo_get_campaigns",
         "description": "List all active Apollo email sequences/campaigns.",
-        "input_schema": {"type": "object", "properties": {}},
+        "input_schema": {"type": "object", "properties": {}, "required": []},
     },
     {
         "name": "apollo_enroll_sequence",
@@ -347,6 +348,7 @@ ALL_TOOLS = [
             "properties": {
                 "stage_filter": {"type": "string", "description": "Optional: filter by pipeline stage"},
             },
+            "required": [],
         },
     },
     {
@@ -595,3 +597,125 @@ if not st.session_state.messages:
         </p>
     </div>
     """, unsafe_allow_html=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
