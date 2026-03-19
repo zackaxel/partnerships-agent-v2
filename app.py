@@ -442,7 +442,7 @@ def run_agent(user_message, history):
 
         while True:
             response = client.messages.create(
-                model="claude-sonnet-4-6",
+                model="claude-3-5-sonnet-20241022",
                 max_tokens=4096,
                 system=SYSTEM_PROMPT,
                 tools=ALL_TOOLS,
