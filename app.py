@@ -119,8 +119,8 @@ def run_agent(user_message):
         response_text = ""
         placeholder = st.empty()
         with client.messages.stream(
-            model="claude-3-5-sonnet-20241022",
-            max_tokens=2048,
+            model="claude-3-haiku-20240307",
+            max_tokens=1024,
             system=SYSTEM_PROMPT,
             messages=history,
         ) as stream:
