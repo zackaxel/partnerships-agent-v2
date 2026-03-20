@@ -110,26 +110,31 @@ for msg in st.session_state.messages:
 
 def run_agent(user_message):
     client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
-    history = [{"role": m["role"], "content": m["content"]}
-               for m in st.session_state.messages[:-1]
-               if m["role"] in ("user", "assistant")]
+
+    history = [
+        {"role": m["role"], "content": m["content"]}
+        for m in st.session_state.messages
+        if m["role"] in ("user", "assistant")
+    ]
     history.append({"role": "user", "content": user_message})
+
     with st.chat_message("assistant", avatar="🤖"):
-    response_text = ""
-    placeholder = st.empty()
+        response_text = ""
+        placeholder = st.empty()
 
-    with client.messages.stream(
-        model="claude-3-7-sonnet-20250219",
-        max_tokens=1200,
-        temperature=0.7,
-        system=SYSTEM_PROMPT,
-        messages=history
-    ) as stream:
-        for text in stream.text_stream:
-            response_text += text
-            placeholder.markdown(response_text + "▌")
+        with client.messages.stream(
+            model="claude-3-7-sonnet-20250219",
+            max_tokens=1200,
+            temperature=0.7,
+            system=SYSTEM_PROMPT,
+            messages=history
+        ) as stream:
+            for text in stream.text_stream:
+                response_text += text
+                placeholder.markdown(response_text + "▌")
 
-    placeholder.markdown(response_text)
+        placeholder.markdown(response_text)
+
     return response_text
 
 if "pending_prompt" in st.session_state:
