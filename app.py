@@ -111,7 +111,7 @@ for msg in st.session_state.messages:
 def run_agent(user_message):
     client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
     history = [{"role": m["role"], "content": m["content"]}
-               for m in st.session_state.messages
+               for m in st.session_state.messages[:-1]
                if m["role"] in ("user", "assistant")]
     history.append({"role": "user", "content": user_message})
 
